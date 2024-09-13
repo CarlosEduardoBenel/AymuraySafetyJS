@@ -1,2 +1,0 @@
-# AymuraySafety-JS
-# AymuraySafetyJS
