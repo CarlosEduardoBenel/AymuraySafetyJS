@@ -123,9 +123,66 @@
             <div class="heading">
                 <h2>NUESTROS CLIENTES</h2>
             </div>
-            <div class="customers-container">
+            <div class="customers-container" id="star-rating">
 
                 <!-- Bucle For php para clientes destacados -->
+                <script>
+                    function generateProductCards() {
+                        const productsContainer = document.createElement('div');
+                        productsContainer.className = 'customers-container';
+
+                        function generateStars(rating) {
+                            const starsContainer = document.createElement('div');
+                            starsContainer.className = 'stars';
+                            const totalStars = 5;
+                            
+                            for (let i = 1; i <= totalStars; i++) {
+                                const star = document.createElement('i');
+                                if (i <= rating) {
+                                    star.className = 'bx bxs-star';
+                                } else if (i - 0.5 <= rating) {
+                                    star.className = 'bx bxs-star-half';
+                                } else {
+                                    star.className = 'bx bx-star';
+                                }
+                                starsContainer.appendChild(star);
+                            }
+                            
+                            return starsContainer;
+                        }
+
+                        for (let i = 1; i < 4; i++) {
+                            const box = document.createElement('div');
+                            box.className = 'box';
+
+                            const starsContent = document.createElement('div');
+                            starsContent.className = 'stars-content';
+
+                            const stars = generateStars(4.8);
+                            starsContent.appendChild(stars);
+
+                            const h2 = document.createElement('h2');
+                            h2.textContent = 'Juan Carlos Rodriguez';
+                            starsContent.appendChild(h2);
+
+                            const p = document.createElement('p');
+                            p.textContent = 'Aymuray Safety es mi proveedor confiable en seguridad industrial. Productos de calidad y excelente servicio al cliente. ¡Los recomiendo!';
+                            starsContent.appendChild(p);
+
+                            const img = document.createElement('img');
+                            img.src = `img/rev${i}.jpg`;
+                            img.alt = `imagen${i}`;
+                            
+                            box.appendChild(img);
+                            box.appendChild(starsContent);
+                            
+                            productsContainer.appendChild(box);
+                        }
+
+                        return productsContainer;
+                    }
+                    document.querySelector('.customers-container').appendChild(generateProductCards());
+                </script>
             </div>
         </section>
         <section class="footer" id="footer">
